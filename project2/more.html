@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {background-color:lightgrey}
+#header {
+    background-image:url("greenin.jpg");
+    color:aqua;
+    font-family:verdana;
+    text-align:center;
+    padding:40px;
+}
+#minheader{
+		   color:Darkgreen;
+		   font-family:verdana;
+		   font-size:150%;
+		   text-align:left;
+}
+#inputs{
+		font-family:Arial;
+		text-align:left;
+}
+.bigbutton{width:100px; height:30px; background-color:rgb(100,189,79);}
+</style>
+</head>
+
+<div id="header">
+<h1> More Info </h1>
+</div>
+ 
+
+
+<body>
+<h3> <font color ="red"> Warning: Make sure you enter the correct data </font></h3>
+
+<div id="minheader">
+<h3> Find the Name and the Telephone number of the customer who borrowed specific CD </h3>
+</div>
+
+<div id="inputs">
+<form action="moreinfo.php" method="get">
+<table>
+<tr><td>CD Title: </td><td><input type="text" name="checktitle"></td></tr><br>
+<tr><td>Purchase Date: </td><td><input type="text" name="purchasedate"></td></tr><br>
+</table>
+<input type="submit" value = "Get Info">
+</form>
+</div>
+
+
+<div id="minheader">
+<h3> Producers' info </h3>
+</div>
+
+<div id="inputs">
+<form action="moreinfo.php" method="get">
+<table>
+<tr><td>Artist Name: </td><td><input type="text" name="artist"></td></tr><br>
+<tr><td>Release Date: </td><td><input type="text" name="year"></td></tr><br>
+</table>
+<input type="submit" value = "Get Info">
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

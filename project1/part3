@@ -1,0 +1,13 @@
+a)SELECT model FROM PC WHERE speed >= 3.00;
+
+
+b)SELECT DISTINCT make FROM Product, Laptop WHERE Product.model IN (SELECT model FROM Laptop WHERE hd >= 100);
+
+
+c)(SELECT model,price FROM PC WHERE model IN(SELECT model FROM Product WHERE make ='B')) UNION
+ (SELECT model,price FROM Laptop WHERE model IN(SELECT model FROM Product WHERE make ='B')) UNION
+ (SELECT model,price FROM Printer WHERE model IN(SELECT model FROM Product WHERE make ='B'));
+
+
+d)SELECT p1.model FROM PC AS p1, PC AS p2 WHERE p1.speed = p2.speed AND p1.ram = p2.ram AND p1.model<>p2.model;
+

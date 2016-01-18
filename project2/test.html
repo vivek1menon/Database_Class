@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {background-color:lightgrey}
+#header {
+    background-image:url("greenim.jpg");
+    color:aqua;
+    font-family:verdana;
+    text-align:center;
+    padding:5px;
+}
+#minheader{
+		   color:Blue;
+		   font-family:verdana;
+		   font-size:150%;
+		   text-align:left;
+}
+#inputs{
+		font-family:Arial;
+		text-align:left;
+}
+.bigbutton{width:100px; height:30px; background-color:rgb(100,189,79);}
+</style>
+</head>
+
+
+
+
+
+
+
+<body>
+
+<div id="header">
+<h1>Project 2</h1>
+<h2>Vivek Menon</h2>
+<h3>ID: 2434 </h3>
+</div>
+
+<div id="minheader">
+<h3> Producer's Information </h3>
+</div>
+
+<div id="inputs">
+<form action="welcome.php" method="get">
+<table>
+<tr><td>Producer's Name: </td><td><input type="text" name="pname"></td></tr><br>
+<tr><td>Producer's Address: </td><td><input type="text" name="paddress"></td></tr><br>
+</table>
+<input type="submit" value = "Enter Info">
+</form>
+</div>
+
+<div id="minheader">
+<h3> CD Information with Producer and Supplier info </h3>
+</div>
+
+<div id="inputs">
+<table>
+<form action="welcome.php" method="get">
+
+<tr><td>CD Title: </td><td><input type="text" name="title"></td></tr><br>
+<tr><td>CD Type: </td><td><input type="text" name="type"></td></tr><br>
+<tr><td>CD Year: </td><td><input type="text" name="year"></td></tr><br>
+<tr><td>CD Producer: </td><td><input type="text" name="pname"></td></tr><br>
+<tr><td>CD Producer's Address: </td><td><input type="text" name="paddress"></td></tr><br>
+<tr><td>CD Supplier: </td><td><input type="text" name="sname"></td></tr><br>
+<tr><td>CD Supplier's Address: </td><td><input type="text" name="saddress"></td></tr><br>
+</table>
+<input type="submit" value= "Enter Info">
+</form>
+</div>
+
+
+<div id="minheader">
+<h3> Customer info </h3>
+</div>
+
+<div id="inputs">
+<form action="welcome.php" method="get">
+<table>
+<tr><td>CD Title:</td><td><input type="text" name="title"></td></tr><br>
+<tr><td>Customer Name: </td><td><input type="text" name="cname"></td></tr><br>
+<tr><td>Customer SSN: </td><td><input type="text" name="ssn"></td></tr><br>
+<tr><td>Customer Telephone: </td><td><input type="text" name="telephone"></td></tr><br>
+</table>
+<input type="submit" value="Enter Info">
+</form>
+</div>
+
+<div id="minheader">
+<h3> VIP Customer info </h3>
+</div>
+
+<div id="inputs">
+<form action="welcome.php" method="get">
+<table>
+<tr><td>CD Title:</td><td><input type="text" name="vtitle"></td></tr><br>
+<tr><td>VIP Customer Name: </td><td><input type="text" name="vname"></td></tr><br>
+<tr><td>VIP Customer SSN: </td><td><input type="text" name="vssn"></td></tr><br>
+<tr><td>VIP Customer Telephone:</td><td> <input type="text" name="vtelephone"></td></tr><br>
+<tr><td>VIP Customer Since: </td><td><input type="text" name="vdate"></td></tr><br>
+<tr><td>VIP Customer Discount: </td><td><input type="text" name="discount"></td></tr><br>
+</table>
+<input type="submit" value="Enter Info">
+</form>
+
+</div>
+
+
+
+
+<FORM METHOD="LINK" ACTION="more.html">
+<INPUT TYPE="submit" VALUE="More Info" style= "float:right" class="bigbutton">
+</FORM>
+
+
+<h1> </h1>
+
+
+
+
+
+
+
+</body>
+</html>

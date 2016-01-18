@@ -1,0 +1,93 @@
+CREATE TABLE CD( 
+Title CHAR(20), 
+Type CHAR(10),
+Year INTEGER,
+PRIMARY KEY (Title, Type, Year)
+);
+
+CREATE TABLE Songs( 
+Title CHAR(20), 
+Type CHAR(10),
+Year INTEGER,
+Track INTEGER,
+SongName VARCHAR(50),
+Artist CHAR(30),
+PRIMARY KEY(SongName, Artist),
+FOREIGN KEY (Title) REFERENCES CD(Title),
+FOREIGN KEY(Type) REFERENCES CD(Type),
+FOREIGN KEY(Year) REFERENCES CD(Year)
+);
+
+CREATE TABLE Producer( 
+PName CHAR(20),
+PAddress VARCHAR(255),
+PRIMARY KEY (PName, PAddress)
+);
+
+
+
+CREATE TABLE Produced(
+Title CHAR(20),
+Type CHAR(10),
+Year INTEGER,
+PName CHAR(20),
+PAddress VARCHAR(255),
+FOREIGN KEY (PName) REFERENCES Producer(PName),
+FOREIGN KEY (PAddress) REFERENCES Producer(PAddress),
+FOREIGN KEY (Title) REFERENCES CD(Title),
+FOREIGN KEY(Type) REFERENCES CD(Type),
+FOREIGN KEY(Year) REFERENCES CD(Year)
+);
+                 
+                                                
+CREATE TABLE Supplier( 
+SName CHAR(20),
+SAddress VARCHAR(255), 
+PRIMARY KEY (SName, SAddress)
+);  
+
+
+
+CREATE TABLE Supplied(
+Title CHAR(20),
+Type CHAR(10),
+Year INTEGER,
+SName CHAR(20),
+SAddress VARCHAR(255),
+FOREIGN KEY (SName) REFERENCES Supplier(SName),
+FOREIGN KEY (SAddress) REFERENCES Supplier(SAddress),
+FOREIGN KEY (Title) REFERENCES CD(Title),
+FOREIGN KEY(Type) REFERENCES CD(Type),
+FOREIGN KEY(Year) REFERENCES CD(Year)
+);
+
+CREATE TABLE Rent(
+Title CHAR(20),
+CName CHAR(20),
+Period INTEGER,
+Date VARCHAR(10),
+FOREIGN KEY (Title) REFERENCES CD(Title),
+FOREIGN KEY (CName) REFERENCES Customer(CName)
+);
+
+CREATE TABLE Customer(
+Title CHAR(20),
+SSN INTEGER,
+CName CHAR(20),
+Telephone INTEGER,
+PRIMARY KEY (CName, SSN)
+);
+
+CREATE TABLE VIP(
+SSN INTEGER,
+CName CHAR(20),
+VTelephone INTEGER,
+VDate VARCHAR(10),
+Discount DECIMAL(4,2),
+FOREIGN KEY (Telephone) REFERENCES Customer(Telephone),
+FOREIGN KEY (SSN) REFERENCES Customer(SSN),
+FOREIGN KEY (CName) REFERENCES Customer(CName)
+);
+
+
+                                                                       

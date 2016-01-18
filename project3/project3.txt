@@ -1,0 +1,122 @@
+CREATE TABLE Person(
+FirstName CHAR(30),
+MiddleName CHAR(30),
+LastName CHAR(30),
+SSN INTEGER PRIMARY KEY,
+StreetAddress VARCHAR(255),
+City CHAR(30),
+State CHAR(30),
+Birthday DATE,
+CHECK (LastName = 'Smith' AND (City = 'California' OR City = 'Texas'))
+)ENGINE=InnoDB;
+
+CREATE TABLE Director(
+SSN INTEGER,
+
+Degree CHAR(30) CHECK (Degree IN (SELECT DDegree FROM Doctor)),
+
+FOREIGN KEY (SSN) REFERENCES Person(SSN)
+)ENGINE=InnoDB;
+
+
+
+CREATE TABLE Doctor(
+SSN INTEGER,
+
+DDegree CHAR(30),
+
+Speciality CHAR(30),
+
+FOREIGN KEY (SSN) REFERENCES Person(SSN),
+CONSTRAINT SpecialityCheck
+CHECK ( Speciality = 'Family Practice' OR Speciality = 'Internal Medicine' OR Speciality = 'Pediatrics' OR Speciality = 'Obstetrics & Gyneocology')
+)ENGINE=InnoDB;
+
+
+
+CREATE TABLE Patient(
+SSN INTEGER,
+
+History VARCHAR(255),
+
+FOREIGN KEY (SSN) REFERENCES Person(SSN)
+)ENGINE=InnoDB;
+
+
+CREATE TABLE Clinic(
+
+Name CHAR(30) PRIMARY KEY,
+
+Phone INTEGER,
+
+CStreetAddress VARCHAR(255),
+
+CCity CHAR(30),
+
+CState CHAR(30)
+
+)ENGINE=InnoDB;
+
+
+
+CREATE TABLE Has(
+
+Name CHAR(30),
+
+SSN INTEGER,
+
+FOREIGN KEY (SSN) REFERENCES Patient(SSN),
+
+FOREIGN KEY (Name) REFERENCES Clinic(Name)
+)ENGINE=InnoDB;
+
+
+
+CREATE TABLE WorksFor(
+
+Name CHAR(30),
+
+SSN INTEGER,
+
+FOREIGN KEY (SSN) REFERENCES Doctor(SSN),
+FOREIGN KEY (Name) REFERENCES Clinic(Name)
+);
+
+
+
+CREATE TABLE Manages(
+
+Name CHAR(30),
+
+SSN INTEGER,
+
+FOREIGN KEY (SSN) REFERENCES Director(SSN),
+
+FOREIGN KEY (Name) REFERENCES Clinic(Name)
+)ENGINE=InnoDB;
+
+
+
+
+CREATE TABLE Treats(
+DSSN INTEGER,
+PSSN INTEGER,
+FOREIGN KEY (DSSN) REFERENCES Doctor(SSN),
+
+FOREIGN KEY (PSSN) REFERENCES Patient(SSN)
+);
+
+CREATE TRIGGER DocTrig
+AFTER INSERT OR UPDATE ON Doctor
+REFERENCING NEW ROW AS NewTuple
+FOR EACH ROW
+WHEN(NewTuple.SSN IN (SELECT SSN FROM Doctor))
+INSERT INTO Doctor
+VALUES(NewTuple.SSN,DOB);
+/**********************************************************************************************************************/
+Part 3
+
+CREATE ASSERTION uniquepatient CHECK
+EXISTS(
+	SELECT DISTINCT LastName, Birthday,DSSN FROM Person, Patient, Treats WHERE Person.SSN= Patient.SSN
+));
